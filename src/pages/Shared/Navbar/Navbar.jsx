@@ -1,15 +1,41 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import useCart from "../../../hooks/useCart";
 
 
 
 const Navbar = () => {
 
+  const {user, logOut} = useContext(AuthContext)
+  const [cart] = useCart();
+
+  const handleLogout =()=>{
+    logOut();
+    then(result=>{})
+    .catch(error=>console.log(error))
+  }
+
    const navOptions = <>
    
    <li className='text-xl font-abc font-bold'><Link to='/'>Home</Link></li>
    <li  className='text-xl font-abc font-bold'><Link to='/menu'>Our Menu</Link></li>
-   <li  className='text-xl font-abc font-bold'><Link to='/login'>Login</Link></li>
+   
    <li  className='text-xl font-abc font-bold'><Link to='/order/salad'>Our Food</Link></li>
+   <li  className='text-xl font-abc font-bold'><Link to='secret'>Secret</Link></li>
+   <li>
+    <Link to='/dashboard/mycart'>
+    <button className="btn gap-2">
+  <AiOutlineShoppingCart className="text-2xl"></AiOutlineShoppingCart>
+  <div className="badge badge-secondary">+{cart?.length || 0}</div>
+</button>
+    </Link>
+   </li>
+
+   {
+    user? <> <span>{user?.displayName}</span>  <button onClick={handleLogout} className="button-primary bg-cyan-400">Logout</button> </>: <li  className='text-xl font-abc font-bold'><Link to='/login'>Login</Link></li> 
+   }
        
       
    

@@ -7,6 +7,16 @@
 
 @layer base{
       .button-primary{
-            @apply   px-6 rounded-lg uppercase font-bold text-white tracking-wider  hover:bg-blue-300 hover:transition duration-100 py-2 font-abc
+            @apply   px-6 rounded-lg uppercase font-bold text-white tracking-wider  hover:bg-blue-300 hover:transition duration-100  font-abc
       }
+
+}
+
+
+.drawer-side a.active{
+  color:white;
+}
+
+.drawer-side a{
+  background-color: transparent;
 }
