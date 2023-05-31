@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import Social from "../Shared/Social/Social";
 
 const Register = () => {
 
@@ -26,21 +27,41 @@ const Register = () => {
     .then(result=>{
       const user = result.user;
       console.log(user);
-      updateUserProfile(data.name, data.photo)
+      updateUserProfile(data.name, data.photoURL)
       .then(()=>{
-            console.log('User profile update');
-            reset();
 
-            Swal.fire({
-                  position: 'top-end',
-                  icon: 'success',
-                  title: 'User created successfully',
-                  showConfirmButton: false,
-                  timer: 1500
-                })
+        const saveUser = {name:data.name, email:data.email}
+           
+          fetch('http://localhost:5000/users',{
+            method: 'POST',
+            headers:{
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(saveUser)
 
-                navigate('/login')
+          })
+          .then(res=> res.json())
+          .then(data=>{
+            console.log(data);
+            if(data.insertedId){
 
+
+              reset();
+
+              Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'User created successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+  
+                  navigate('/login')
+  
+
+            }
+          })
+           
       })
       .catch(error=> console.log(error))
     })
@@ -143,6 +164,7 @@ const Register = () => {
             </div>
             <p>Already have an account? <Link to='/login'>Got to login</Link></p>
           </form>
+          <Social></Social>
         </div>
       </div>
     </div>

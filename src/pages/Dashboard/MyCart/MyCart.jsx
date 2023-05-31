@@ -1,15 +1,17 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import useCart from '../../../hooks/useCart';
+
 import { BsTrash} from "react-icons/bs";
 import Swal from 'sweetalert2';
+import useCart from '../../../hooks/useCart';
+
 
 
 const MyCart = () => {
 
       const [cart, refetch] = useCart();
       const total = cart.reduce((sum, item)=> item.price + sum, 0);
-
+    console.log(total);
     const handleDelete=(item)=>{
 
       Swal.fire({

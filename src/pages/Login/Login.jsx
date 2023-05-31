@@ -10,6 +10,7 @@ import {
 import { AuthContext } from "../../provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import Social from "../Shared/Social/Social";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -136,6 +137,7 @@ const Login = () => {
           </form>
           <p>
             New Here? <Link to="/register">Go To register</Link>
+            <Social></Social>
           </p>
         </div>
       </div>
