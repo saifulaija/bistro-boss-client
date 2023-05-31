@@ -13,13 +13,16 @@ import { BsWalletFill } from "react-icons/bs";
 
 import { ImSpoonKnife } from "react-icons/im";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
   console.log(cart);
   // TODO:load data from the server to have dynamic
 
-  const isAdmin = true;
+  // const isAdmin = true;
+
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="drawer drawer-mobile">

@@ -4,11 +4,16 @@ import { Helmet } from "react-helmet-async";
 import { MdDeleteForever } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllUsers = () => {
+
+ const [axiosSecure] =useAxiosSecure();
+
+
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users");
-    return res.json();
+    const res = await axiosSecure.get("/users");
+    return res.data;
   });
 
   const handleMakeAdmin = (user) => {
