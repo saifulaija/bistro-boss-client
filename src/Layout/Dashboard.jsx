@@ -51,12 +51,12 @@ const Dashboard = () => {
               </li>
 
               <li>
-                <NavLink to="/dashboard/reservations">
-                  <ImSpoonKnife></ImSpoonKnife> Add Items
+                <NavLink to="/dashboard/addItem">
+                  <ImSpoonKnife></ImSpoonKnife> Add an Item
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manage">
+                <NavLink to="/dashboard/manageItems">
                   <AiOutlineUser></AiOutlineUser> Manage Items
                 </NavLink>
               </li>

@@ -16,7 +16,7 @@ const AdminRoute = ({children}) => {
       return <progress className="progress w-56"></progress>
     }
 
-    if(user){
+    if(user && isAdmin){
       return children;
     }
 
